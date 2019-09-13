@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+
+    </head>
+    <body>
+        <div id="cuentaPNL">
+            <header class="header">
+                <img class="logo" src="img/logo.png"/>
+                <div class="align-left">
+                    <span id="nombre">Bienvenido/a<span id="nombreUser"></span></span>
+                    <img class="avatar"  src="img/avatar.svg"/>
+                </div>
+            </header>
+            <main  class="white-container">
+                <nav class="menu-container">
+                    <h1 class="tu-cuenta">Tu cuenta</h1>
+                    <button class="links" id="consultarCuenta">Consular Cuenta</button>
+                    <button class="links" id="extraer">Extraer dinero</button>
+                    <button class="links" id="depositar">Depositar dinero</button>
+                    <button class="links" onclick="cambiarLimiteDeExtraccion()">Cambiar límite de extracción</button>
+                    <button class="links" id="salir">SALIR</button>
+                </nav>
+                <section class="green-container" id="masterTpl">
+                   <!-- <article class="cuenta-info">
+                        <p>Saldo en tu cuenta</p>
+                        <h3 id="saldo-cuenta">$</h3>
+                        <p id="limite-extraccion">Tu límite de extracción es: </p>
+                    </article>-->
+                </section>
+            </main>
+            
+        </div>
+        <div id="LoginPNL">
+            <a>Usuario</a>
+            <input type="text" id="usuario">
+            <a>Clave</a>
+            <input type="password" id="clave">
+            <a id="SMSpass"></a>
+            <button id="loginBTN">Ingresar</button>
+        </div>
+        
+        <!-- Zona de paneles paso 2 -->
+        <article id="consultarTpl" class="ocultarTpl">
+            <h1>Consultar Dinero     </h1>
+            <h2> Saldo Actual: <span id="saldo"> </span> </h2>
+           
+            <h2> Limite De Extraccion<span id="limite-extraccion"></span></h2>
+        </article>
+        
+        <article id="extraerTpl" class="ocultarTpl">
+            <h2>Estraer Dinero</h2>
+            <input type="number" id="extraerInput" min="1">
+            <button id="extraerBTN">Aceptar</button>
+            <div id="pnlMensajeExtraer"></div>
+        </article>
+        
+        <article id="depositarTpl" class="ocultarTpl">
+            <h2>Depositar Dinero</h2>
+            <input type="number" id="depositarInput" min="1">
+            <button id="depositarBTN">Aceptar</button>
+            <div id="pmlMensajeDepositar"></div>
+        </article>
+        <script src="js/programa.js"></script>
+    </body>
+</html>
