@@ -42,6 +42,7 @@ class programa {
         document.querySelector("#extraer").setAttribute("onclick", "cuenta.extraerTpl()");
         document.querySelector("#extraerBTN").setAttribute("onclick","cuenta.extraerCalculo();");
         document.querySelector("#depositar").setAttribute("onclick", "cuenta.depositarTpl();");
+        document.querySelector("#depositarBTN").setAttribute("onclick","cuenta.depocitarCalculo();");
     }
     // para ocultar o mostrar la cuenta Banco
     static borrar() {
@@ -108,6 +109,15 @@ class cuenta {
     static depositarTpl() {
         console.log("hola Depocito");
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#depositarTpl").innerHTML;
+    }
+    static depocitarCalculo(){
+        if (document.querySelector("#depositarInput").value<=0) {
+            document.querySelector("#pmlMensajeDepocitar").innerHTML="Debe ingresar un valor :D";
+        } else{
+            let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+            misDatos.saldo = misDatos.saldo + document.querySelector("#depositarInput");
+            document.querySelector("#pmlMensajeDepositar").innerHTML = "Se a efectuado su ingreso Monetario $" + misDatos.saldo;
+        }
     }
 }
 
