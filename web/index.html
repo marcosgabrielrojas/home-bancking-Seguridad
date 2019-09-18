@@ -31,7 +31,7 @@ and open the template in the editor.
                     <button class="links" id="consultarCuenta">Consular Cuenta</button>
                     <button class="links" id="extraer">Extraer dinero</button>
                     <button class="links" id="depositar">Depositar dinero</button>
-                    <button class="links" onclick="cambiarLimiteDeExtraccion()">Cambiar límite de extracción</button>
+                    <button class="links" id="limite">Cambiar límite de extracción</button>
                     <button class="links" id="salir">SALIR</button>
                 </nav>
                 <section class="green-container" id="masterTpl">
@@ -73,6 +73,13 @@ and open the template in the editor.
             <input type="number" id="depositarInput" min="1">
             <button id="depositarBTN">Aceptar</button>
             <div id="pmlMensajeDepositar"></div>
+        </article>
+        
+        <article id="limiteTpl" class="ocultarTpl">
+            <h2>Depositar Dinero</h2>
+            <input type="number" id="limiteInput" min="1">
+            <button id="limiteBTN">Aceptar</button>
+            <div id="pnlLimite"></div>
         </article>
         <script src="js/programa.js"></script>
     </body>

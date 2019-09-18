@@ -40,9 +40,11 @@ class programa {
         document.querySelector("#salir").setAttribute("onclick", "programa.salir();");
         document.querySelector("#consultarCuenta").setAttribute("onclick", "cuenta.consultarTpl();");
         document.querySelector("#extraer").setAttribute("onclick", "cuenta.extraerTpl()");
-        document.querySelector("#extraerBTN").setAttribute("onclick","cuenta.extraerCalculo();");
+        document.querySelector("#extraerBTN").setAttribute("onclick", "cuenta.extraerCalculo();");
         document.querySelector("#depositar").setAttribute("onclick", "cuenta.depositarTpl();");
-        document.querySelector("#depositarBTN").setAttribute("onclick","cuenta.depocitarCalculo();");
+        document.querySelector("#depositarBTN").setAttribute("onclick", "cuenta.depocitarCalculo();");
+        document.querySelector("#limite").setAttribute("onclick", "cuenta.limiteTpl();");
+        document.querySelector("#limiteBTN").setAttribute("onclick", "cuenta.cambiarLimite()");
     }
     // para ocultar o mostrar la cuenta Banco
     static borrar() {
@@ -62,8 +64,8 @@ class baseDeDatos {
             pass: "123",
             limite: 2000,
             saldo: 5000,
-            otro:100
-            
+            otro: 100
+
         };
 
         //usamops el localStorage como base de dato 
@@ -85,7 +87,7 @@ class cuenta {
     static extraerTpl() {
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#extraerTpl").innerHTML;
 
-        
+
     }
     static extraerCalculo() {
         console.log("Funciona boton Extraer Calculo");
@@ -93,16 +95,17 @@ class cuenta {
             document.querySelector("#pnlMensajeExtraer").innerHTML = "No se puede hacer la extraccion tiene que ser Mayor a 0.";
         } else {
             let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
-            if (document.querySelector("#extraerInput").value >= misDatos.limite){
-                document.querySelector("#pnlMensajeExtraer").innerHTML ="NO se Puede hacer la Extaccion ingrese un numero menor.";
+            if (document.querySelector("#extraerInput").value >= misDatos.limite) {
+                document.querySelector("#pnlMensajeExtraer").innerHTML = "NO se Puede hacer la Extaccion ingrese un numero menor.";
             } else {
                 console.log("face de calculo+ Cuenta");
-                console.log("Saldo antes de el calculo "+ misDatos.saldo);
+                console.log("Saldo antes de el calculo " + misDatos.saldo);
                 misDatos.saldo = misDatos.saldo - document.querySelector("#extraerInput").value;
-                localStorage.setItem("miBaseDeDatos",JSON.stringify(misDatos));
+                localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
                 console.log("Saldo Despues de la Extraccion");
-                document.querySelector("#pnlMensajeExtraer").innerHTML = "Extraccion Realizado por $"+document.querySelector("#extraerInput").value;
+                document.querySelector("#pnlMensajeExtraer").innerHTML = "Extraccion Realizado por $" + document.querySelector("#extraerInput").value;
             }
+            
         }
     }
 
@@ -110,14 +113,24 @@ class cuenta {
         console.log("hola Depocito");
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#depositarTpl").innerHTML;
     }
-    static depocitarCalculo(){
-        if (document.querySelector("#depositarInput").value<=0) {
-            document.querySelector("#pmlMensajeDepositar").innerHTML="Debe ingresar un valor :D";
-        } else{
+    static depocitarCalculo() {
+        if (document.querySelector("#depositarInput").value <= 0) {
+            document.querySelector("#pmlMensajeDepositar").innerHTML = "Debe ingresar un valor :D";
+        } else {
             let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
-            misDatos.saldo =  parseInt( document.querySelector("#depositarInput").value)+misDatos.saldo;
-            localStorage.setItem("miBaseDeDatos",JSON.stringify(misDatos));            
+            misDatos.saldo = parseInt(document.querySelector("#depositarInput").value) + misDatos.saldo;
+            localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
             document.querySelector("#pmlMensajeDepositar").innerHTML = "Se a efectuado su ingreso Monetario $" + misDatos.saldo;
+        }
+    }
+    static limiteTpl() {
+        document.querySelector("#masterTpl").innerHTML = document.querySelector("#limiteTpl").innerHTML;
+    }
+    static cambiarLimite() {
+        if (document.querySelector("#limiteInput").value <= 0) {
+            document.querySelector("#pnlLimite").innerHTML = "hola";
+        } else {
+            console.log("hola else");
         }
     }
 }
