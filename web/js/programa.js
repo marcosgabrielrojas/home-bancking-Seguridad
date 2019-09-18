@@ -112,10 +112,11 @@ class cuenta {
     }
     static depocitarCalculo(){
         if (document.querySelector("#depositarInput").value<=0) {
-            document.querySelector("#pmlMensajeDepocitar").innerHTML="Debe ingresar un valor :D";
+            document.querySelector("#pmlMensajeDepositar").innerHTML="Debe ingresar un valor :D";
         } else{
             let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
-            misDatos.saldo = misDatos.saldo + document.querySelector("#depositarInput");
+            misDatos.saldo =  parseInt( document.querySelector("#depositarInput").value)+misDatos.saldo;
+            localStorage.setItem("miBaseDeDatos",JSON.stringify(misDatos));            
             document.querySelector("#pmlMensajeDepositar").innerHTML = "Se a efectuado su ingreso Monetario $" + misDatos.saldo;
         }
     }
