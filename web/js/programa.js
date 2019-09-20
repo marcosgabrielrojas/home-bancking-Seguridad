@@ -30,6 +30,8 @@ class programa {
     static salir() {
         programa.borrar();
         programa.mostrar();
+        
+
 //         document.querySelector("#loginPNL").style.display = "block";
     }
     //                          funcionamiento de los botones 
@@ -52,6 +54,8 @@ class programa {
     }
     static mostrar() {
         document.querySelector("#LoginPNL").style.display = "block";
+        document.querySelector("#usuario").innerHTML=" ";
+        document.querySelector("#clave").innerHTML=" ";
     }
 }
 class baseDeDatos {
@@ -120,17 +124,29 @@ class cuenta {
             let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
             misDatos.saldo = parseInt(document.querySelector("#depositarInput").value) + misDatos.saldo;
             localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
-            document.querySelector("#pmlMensajeDepositar").innerHTML = "Se a efectuado su ingreso Monetario $" + misDatos.saldo;
+            document.querySelector("#pmlMensajeDepositar").innerHTML = "Se a efectuado su ingreso Monetario Saldo actual $" + misDatos.saldo;
         }
     }
     static limiteTpl() {
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#limiteTpl").innerHTML;
     }
     static cambiarLimite() {
+        console.log("entro cambiarLimite();");
+        let misDatos =JSON.parse(localStorage.getItem("miBaseDeDatos"));
         if (document.querySelector("#limiteInput").value <= 0) {
-            document.querySelector("#pnlLimite").innerHTML = "hola";
+            console.log("entro fase 1 de if rebote");
+            document.querySelector("#pnlLimite").innerHTML = "tiene que ingresar un numero";
         } else {
-            console.log("hola else");
+            console.log("else");
+            document.querySelector("#pnlLimite").innerHTML = "";
+            if (document.querySelector("#limiteInput").value <= 10001 ) {
+                misDatos.limite =document.querySelector("#limiteInput").value;
+                localStorage.setItem("miBaseDeDatos",JSON.stringify(misDatos));
+                document.querySelector("#pnlLimite").innerHTML = "Limite de Extraccion Actualizado Verifique para confirmar :D";
+            } else{
+                document.querySelector("#pnlLimite").innerHTML="El Limite es muy Grande tiene que ser menor que $10000";
+            }
+            
         }
     }
 }
