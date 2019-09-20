@@ -51,11 +51,11 @@ class programa {
     // para ocultar o mostrar la cuenta Banco
     static borrar() {
         document.querySelector("#cuentaPNL").style.display = "none";
+        
     }
     static mostrar() {
         document.querySelector("#LoginPNL").style.display = "block";
-        document.querySelector("#usuario").innerHTML=" ";
-        document.querySelector("#clave").innerHTML=" ";
+        
     }
 }
 class baseDeDatos {
