@@ -11,19 +11,13 @@ class programa {
         console.log("Funciona el login");
         
         // Busca El usuario
-        let userBuscando = datoCuenta.find(usuarioPorUsuario =>
-                usuarioPorUsuario.user === usuario);
+      
          
-        let datosCuenta = baseDeDatos.datos();
+       
         // Comparacion y validacion de los usuario
         
-        if (userBuscando === undefined) {
-           console.log("no eres usuario del banco");
-            document.querySelector("#SMSpass").innerHTML = "Contraceña o Usuario INCORRECTO";
- //            document.querySelector("#");
-
-        } else {
-            if (userBuscando.pass === clave) {
+        
+            if (datoCuenta.user === usuario & datoCuenta.pass === clave) {
                     console.log("el usuario entro");
             document.querySelector("#LoginPNL").style.display = "none";
             document.querySelector("#cuentaPNL").style.display = "block";
@@ -33,10 +27,13 @@ class programa {
             console.log("no eres usuario del banco");
             document.querySelector("#SMSpass").innerHTML = "Contraceña o Usuario INCORRECTO";
 
-            }
-            
-            
         }
+    }
+    static loginWeb(){
+        console.log("entro LoginWeb();");
+        let userInput = document.querySelector("#usuario").value;
+        let passInput = document.querySelector("#clave").value;
+        Http.doGet("loginWeb() datos="+" Usuario= "+userInput+ "& clave= "+passInput);
     }
     //                          metodo Salir Cuenta
     static salir() {
@@ -48,8 +45,9 @@ class programa {
     }
     //                          funcionamiento de los botones 
     static button() {
-
+        
         document.querySelector("#loginBTN").setAttribute("onclick", "programa.login();");
+        document.querySelector("#loginServlent").setAttribute("onclick","programa.loginWeb();");
         //document.querySelector("#buttonBRR").setAttribute("onclick","programa.borrar();");
         document.querySelector("#salir").setAttribute("onclick", "programa.salir();");
         document.querySelector("#consultarCuenta").setAttribute("onclick", "cuenta.consultarTpl();");
