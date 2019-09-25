@@ -16,16 +16,26 @@ class programa {
          
         let datosCuenta = baseDeDatos.datos();
         // Comparacion y validacion de los usuario
+        
         if (userBuscando === undefined) {
-            console.log("el usuario entro");
+           console.log("no eres usuario del banco");
+            document.querySelector("#SMSpass").innerHTML = "Contraceña o Usuario INCORRECTO";
+ //            document.querySelector("#");
+
+        } else {
+            if (userBuscando.pass === clave) {
+                    console.log("el usuario entro");
             document.querySelector("#LoginPNL").style.display = "none";
             document.querySelector("#cuentaPNL").style.display = "block";
             document.querySelector("#SMSpass").innerHTML = "";
-//            document.querySelector("#");
-
-        } else {
+            localStorage.setItem("miCuenta", JSON.stringify(userBuscando))
+            } else {
             console.log("no eres usuario del banco");
             document.querySelector("#SMSpass").innerHTML = "Contraceña o Usuario INCORRECTO";
+
+            }
+            
+            
         }
     }
     //                          metodo Salir Cuenta
