@@ -5,7 +5,9 @@
  */
 package web;
 
+import entidades.datos;
 import com.google.gson.Gson;
+import entidades.cuentas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,17 +28,18 @@ ArrayList<datos> miListado = new ArrayList();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Usuario: "+ req.getParameter("user"));
+        System.out.println("ArrayCuenta "+  cuentas.date());
         System.out.println("Clave: "+ req.getParameter("pass"));
         
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       System.out.println( "Nuevo Saldo ");
+       System.out.println( "---------------Envio de Depocito------- ");
+       // (req) atrae el dato de el usuario  getReader().readLine() au no seda
        String saldo = req.getReader().readLine();
-      
+        System.out.println("saldo="+ saldo);
        datos guardados =convertirJson.fromJson(saldo,datos.class);
-        System.out.println("Nuevo Saldo: "+ guardados.getSaldo());
         miListado.add(guardados);
     }
     
